@@ -63,4 +63,8 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # ActionMailerにデフォルトのURLを設定する。これを設定することでメール内のリンクを正しく表示できる。
+  # 本番環境にも記載する必要がある。config.action_mailer.default_url_options = { host: 'xxxx.com' }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3002 }
 end
