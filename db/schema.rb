@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 2022_02_23_003237) do
 
   create_table "demo_tweets", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "demo_users_id", null: false
+    t.bigint "demo_user_id", null: false
     t.text "context"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["demo_users_id"], name: "index_demo_tweets_on_demo_users_id"
+    t.index ["demo_user_id"], name: "index_demo_tweets_on_demo_user_id"
   end
 
   create_table "demo_users", charset: "utf8mb4", force: :cascade do |t|
@@ -58,5 +58,5 @@ ActiveRecord::Schema.define(version: 2022_02_23_003237) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "demo_tweets", "demo_users", column: "demo_users_id"
+  add_foreign_key "demo_tweets", "demo_users"
 end
