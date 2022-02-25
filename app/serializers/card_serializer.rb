@@ -1,5 +1,5 @@
 class CardSerializer < ActiveModel::Serializer
-  attributes :card_id, :card_user_id, :list_id, :card_title, :list_title, :body, :status
+  attributes :card_id, :card_user_id, :list_id, :card_title, :list_title, :body, :status, :expires_at
 
   def card_id
     object.id
