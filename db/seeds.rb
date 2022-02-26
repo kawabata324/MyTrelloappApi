@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+demo_user = DemoUser.first
+demo_user.demo_tweets.build
+DemoTweet.create!(demo_users_id: demo_user.id, context: 'おはよう')

@@ -10,7 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_005928) do
+ActiveRecord::Schema.define(version: 2022_02_23_101315) do
+
+  create_table "cards", charset: "utf8mb4", force: :cascade do |t|
+    t.string "card_title", null: false
+    t.text "body"
+    t.integer "status", default: 0
+    t.date "expires_at"
+    t.bigint "user_id", null: false
+    t.bigint "list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_cards_on_list_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "demo_tweets", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "demo_user_id", null: false
+    t.text "context"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["demo_user_id"], name: "index_demo_tweets_on_demo_user_id"
+  end
+
+  create_table "demo_users", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lists", charset: "utf8mb4", force: :cascade do |t|
+    t.string "list_title", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
+  end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -42,4 +79,8 @@ ActiveRecord::Schema.define(version: 2022_02_07_005928) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "cards", "lists"
+  add_foreign_key "cards", "users"
+  add_foreign_key "demo_tweets", "demo_users"
+  add_foreign_key "lists", "users"
 end

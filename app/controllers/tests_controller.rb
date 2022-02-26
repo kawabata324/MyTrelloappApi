@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
-
+before_action :authenticate_v1_user!
   def test
-    render json: { status: 'okok'}
+    render status: 200, json: {user: current_v1_user.id}
   end
 end
