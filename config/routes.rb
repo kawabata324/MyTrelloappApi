@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show]
   resources :demo_users, only: [:index, :show]
-  resources :cards, only: [:index, :create]
-  resources :lists, only: [:index, :create]
+  resources :cards, only: [:index, :create, :destroy]
+  resources :lists, only: [:index, :create, :destroy]
 
   get '/test', to:'tests#test'
 end

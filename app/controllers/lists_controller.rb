@@ -13,7 +13,8 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list = List.find_by(id: params[:id])
+    @list = List.find(params[:id])
+    pp @list
     @list.destroy!
 
     render status: 200, json: @list, serializer: ListSerializer

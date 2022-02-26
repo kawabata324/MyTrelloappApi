@@ -8,8 +8,15 @@ class CardsController < ApplicationController
   def create
     @card = Card.create!(card_params.merge(user_id: current_v1_user.id))
 
-    render status: 200,json:
+    render status: 200, json:
     @card, serializer: CardSerializer
+  end
+
+  def destroy
+    @card = Card.find(params[:id])
+    @card.destroy!
+
+    render status: 200, json: @card, serializer: CardSerializer
   end
 
   private
