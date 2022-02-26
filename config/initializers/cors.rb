@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'localhost:8000', 'https://kawabata324.github.io/MytrelloApp/'
+    origins 'localhost:8000', 'https://nameless-taiga-33416.herokuapp.com'
 
     resource '*',
       headers: :any,
