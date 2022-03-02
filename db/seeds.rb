@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-demo_user = DemoUser.first
-demo_user.demo_tweets.build
-DemoTweet.create!(demo_users_id: demo_user.id, context: 'おはよう')
+# School.create!(name: 'A')
+# School.create!(name: 'B')
+# school1 = School.first.id
+# school2 = School.second.id
+# Student.create!(school_id: school1,grade: 2)
+# Student.create!(school_id: school2,grade: 1)
+# Student.create!(school_id: school2,grade: 3)
+student1 = Student.first.id
+student2 = Student.find(4).id
+Person.create!(student_id: student1, age: 17)
+Person.create!(student_id: student2, age: 23)

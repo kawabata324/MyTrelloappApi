@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :demo_users, only: [:index, :show]
   resources :cards, only: [:index, :create, :destroy]
-  resources :lists, only: [:index, :create, :destroy]
+  resources :lists
   get '/test', to:'tests#test'
 end
