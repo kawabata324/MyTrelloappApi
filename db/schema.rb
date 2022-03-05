@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_051131) do
+ActiveRecord::Schema.define(version: 2022_03_05_090517) do
 
   create_table "cards", charset: "utf8mb4", force: :cascade do |t|
     t.string "card_title", null: false
@@ -49,16 +49,20 @@ ActiveRecord::Schema.define(version: 2022_03_05_051131) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
-  create_table "my_products", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "people", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "student_id"
     t.integer "age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["student_id"], name: "index_people_on_student_id"
+  end
+
+  create_table "products", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "schools", charset: "utf8mb4", force: :cascade do |t|
