@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_23_101315) do
+ActiveRecord::Schema.define(version: 2022_03_08_075908) do
 
   create_table "cards", charset: "utf8mb4", force: :cascade do |t|
     t.string "card_title", null: false
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 2022_02_23_101315) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["list_id"], name: "index_cards_on_list_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "copy_products", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.index ["email"], name: "unique_emails", unique: true
+    t.index ["name"], name: "index_copy_products_on_name"
   end
 
   create_table "demo_tweets", charset: "utf8mb4", force: :cascade do |t|
@@ -39,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_02_23_101315) do
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email_confirmation"
   end
 
   create_table "lists", charset: "utf8mb4", force: :cascade do |t|
@@ -47,6 +55,39 @@ ActiveRecord::Schema.define(version: 2022_02_23_101315) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "people", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "student_id"
+    t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_people_on_student_id"
+  end
+
+  create_table "products", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "kind", limit: 10, default: "food", comment: "商品の種類を表すカラム"
+    t.datetime "sold_at", precision: 6
+    t.decimal "sample", precision: 3, scale: 2
+  end
+
+  create_table "schools", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "students", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "school_id"
+    t.integer "grade"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["school_id"], name: "index_students_on_school_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -83,4 +124,6 @@ ActiveRecord::Schema.define(version: 2022_02_23_101315) do
   add_foreign_key "cards", "users"
   add_foreign_key "demo_tweets", "demo_users"
   add_foreign_key "lists", "users"
+  add_foreign_key "people", "students"
+  add_foreign_key "students", "schools"
 end

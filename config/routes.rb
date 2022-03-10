@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :cards, only: [:index, :create, :destroy]
   resources :lists, only: [:index, :create, :destroy]
   get '/test', to:'tests#test'
+  post '/callback', to: 'lineBots#callback'
 end

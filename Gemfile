@@ -25,6 +25,9 @@ gem "devise_token_auth"
 
 gem 'active_model_serializers'
 
+#LINE用gem
+gem 'line-bot-api'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

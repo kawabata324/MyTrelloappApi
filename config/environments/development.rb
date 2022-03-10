@@ -67,4 +67,6 @@ Rails.application.configure do
   # ActionMailerにデフォルトのURLを設定する。これを設定することでメール内のリンクを正しく表示できる。
   # 本番環境にも記載する必要がある。config.action_mailer.default_url_options = { host: 'xxxx.com' }
   config.action_mailer.default_url_options = { host: 'localhost', port: 3002 }
+
+  config.hosts << "d354-2001-ce8-181-87b3-acec-7f9e-75e7-1609.ngrok.io"
 end
