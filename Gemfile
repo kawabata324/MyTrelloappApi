@@ -27,6 +27,9 @@ gem 'active_model_serializers'
 
 #LINE用gem
 gem 'line-bot-api'
+#環境変数用gem
+gem 'dotenv-rails'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
